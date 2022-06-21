@@ -4,6 +4,7 @@ import fun.gengzi.core.LogRecordContext;
 import fun.gengzi.core.LogRecordOperationSource;
 import fun.gengzi.core.LogRecordOps;
 import fun.gengzi.core.MethodExecuteResult;
+import fun.gengzi.parser.LogRecordValueParser;
 import lombok.extern.slf4j.Slf4j;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
@@ -21,7 +22,7 @@ import java.util.*;
  * @date 2022/6/21 13:52
  */
 @Slf4j
-public class LogRecordAdvice implements MethodInterceptor {
+public class LogRecordAdvice  extends LogRecordValueParser implements MethodInterceptor {
 
 
     @Autowired
@@ -112,8 +113,26 @@ public class LogRecordAdvice implements MethodInterceptor {
         return target.getClass();
     }
 
-    private List<String> getBeforeExecuteFunctionTemplate(Collection<LogRecordOps> logRecordOps){
 
-//        logRecordOps.stream().collect()
+    /**
+     * 获取执行方法前的，spel 模板
+     *
+     * @param logRecordOps 方法注解的信息
+     * @return
+     */
+    private List<String> getBeforeExecuteFunctionTemplate(Collection<LogRecordOps> logRecordOps) {
+        ArrayList<String> spelTemplateAll = new ArrayList<>();
+        // 获取模板
+        for (LogRecordOps ops : logRecordOps) {
+            ArrayList<String> spelTemplate = new ArrayList<>();
+            spelTemplate.add(ops.getSuccessLogTemplate());
+            spelTemplate.add(ops.getFailLogTemplate());
+            spelTemplate.add(ops.getBizNo());
+            spelTemplate.add(ops.getOperatorId());
+            spelTemplate.add(ops.getCondition());
+            spelTemplateAll.addAll(spelTemplate);
+        }
+        return spelTemplateAll;
     }
+
 }

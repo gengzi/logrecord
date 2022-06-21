@@ -12,6 +12,14 @@ import java.util.Map;
  * * 把方法的返回值和 ErrorMsg 都放到 RootObject 中
  *
  *
+ *
+ * EvaluationContext在评估表达式以解析属性、方法或字段并帮助执行类型转换时，使用该接口。Spring 提供了两种实现。
+ *
+ * SimpleEvaluationContext：针对不需要完整范围的 SpEL 语言语法并应受到有意义限制的表达式类别，公开了基本 SpEL 语言功能和配置选项的子集。示例包括但不限于数据绑定表达式和基于属性的过滤器。
+ *
+ * StandardEvaluationContext：公开全套 SpEL 语言功能和配置选项。您可以使用它来指定默认根对象并配置每个可用的评估相关策略。
+ *
+ *
  */
 public class LogRecordEvaluationContext extends MethodBasedEvaluationContext {
 

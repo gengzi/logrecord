@@ -5,6 +5,26 @@ import java.lang.annotation.*;
 /**
  * <h1> 业务日志注解 </h1>
  *
+ *
+ *  对 spel 的说明
+ *  SpEL 还通过使用标准点表示法（例如 prop1.prop2.prop3）以及相应的属性值设置来支持嵌套属性。也可以访问公共字段。
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
  * @author Administrator
  * @date 2022/6/21 10:53
  */
