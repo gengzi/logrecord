@@ -65,6 +65,13 @@ public class LogRecordProxyAutoConfiguration implements ImportAware {
         return new DefaultParseFunction();
     }
 
+    /**
+     * @Autowired List<IParseFunction> parseFunctions
+     * 在ioc 创建bean 时，注入属性，会把IParseFunction 的所有bean定义信息扫描后，注入子类实例
+     *
+     * @param parseFunctions
+     * @return
+     */
     @Bean
     public ParseFunctionFactory parseFunctionFactory(@Autowired List<IParseFunction> parseFunctions) {
         return new ParseFunctionFactory(parseFunctions);
