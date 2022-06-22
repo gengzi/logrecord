@@ -1,6 +1,7 @@
 package fun.gengzi.save;
 
 import fun.gengzi.aspect.LogRecord;
+import fun.gengzi.core.LogRecordOps;
 
 public interface ILogRecordService {
     /**
@@ -8,6 +9,6 @@ public interface ILogRecordService {
      *
      * @param logRecord 日志实体
      */
-    void record(LogRecord logRecord);
+    void record(LogRecordOps logRecord);
 
 }

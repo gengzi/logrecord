@@ -10,6 +10,8 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>log-record-core</module>
+        <module>log-record-autoconfig</module>
+        <module>logrecord-spring-boot-starter</module>
     </modules>
 
     <!--最少依赖-->

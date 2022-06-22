@@ -24,7 +24,7 @@ public class LogRecordPointcut extends StaticMethodMatcherPointcut implements Se
         return !CollectionUtils.isEmpty(logRecordOperationSource.computeLogRecordOperations(method, targetClass));
     }
 
-    void setLogRecordOperationSource(LogRecordOperationSource logRecordOperationSource) {
+    public void setLogRecordOperationSource(LogRecordOperationSource logRecordOperationSource) {
         this.logRecordOperationSource = logRecordOperationSource;
     }
 }

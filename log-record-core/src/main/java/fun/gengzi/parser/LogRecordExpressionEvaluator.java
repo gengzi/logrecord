@@ -42,6 +42,16 @@ public class LogRecordExpressionEvaluator extends CachedExpressionEvaluator {
     }
 
 
+    /**
+     * 创建  evaluationcontext  评估表达式以解析属性、方法或字段并帮助执行类型转换时，使用该接口
+     * @param method
+     * @param args
+     * @param targetClass
+     * @param result
+     * @param errorMsg
+     * @param beanFactory
+     * @return
+     */
     public EvaluationContext createEvaluationContext(Method method, Object[] args, Class<?> targetClass,
                                                      Object result, String errorMsg, BeanFactory beanFactory) {
         Method targetMethod = getTargetMethod(targetClass, method);
