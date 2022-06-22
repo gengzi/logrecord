@@ -32,6 +32,7 @@ public class LogRecordContext {
      * 设置一个空位置
      */
     public static void putEmptySpan(){
+
         Deque<Map<String, Object>> stack = new LinkedList<>();
         variableMapStack.set(stack);
     }

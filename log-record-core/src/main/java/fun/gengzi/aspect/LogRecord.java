@@ -5,6 +5,8 @@ import java.lang.annotation.*;
 /**
  * <h1> 业务日志注解 </h1>
  *
+ *  用于标记方法上的业务操作说明，提供给用户查看
+ *
  *
  *  对 spel 的说明
  *  SpEL 还通过使用标准点表示法（例如 prop1.prop2.prop3）以及相应的属性值设置来支持嵌套属性。也可以访问公共字段。
@@ -30,6 +32,7 @@ import java.lang.annotation.*;
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
+// 当以后我们在定义一个作用于类的注解时候，如果希望该注解也作用于其子类，那么可以用@Inherited 来进行修饰
 @Inherited
 @Documented
 public @interface LogRecord {

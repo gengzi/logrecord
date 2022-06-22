@@ -17,7 +17,9 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 /**
- * <h1> </h1>
+ * <h1>日志记录通知类</h1>
+ * <p>
+ * 提供日志记录注解修饰方法的通知拦截
  *
  * @author Administrator
  * @date 2022/6/21 13:52
@@ -157,7 +159,7 @@ public class LogRecordAdvice extends LogRecordValueParser implements MethodInter
                     .build();
 
             // action 为空, 不记录日志
-            if (StringUtils.isEmpty(logRecord.getSuccessLogTemplate())){
+            if (StringUtils.isEmpty(logRecord.getSuccessLogTemplate())) {
                 continue;
             }
             // save log 需要新开事务, 失败日志不能因为事务回滚而丢失
