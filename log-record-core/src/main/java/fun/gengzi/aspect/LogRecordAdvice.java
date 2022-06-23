@@ -174,7 +174,7 @@ public class LogRecordAdvice extends LogRecordValueParser implements MethodInter
     private String getOperatorIdFromServiceAndPutTemplate(LogRecordOps operation, List<String> spELTemplates) {
         String realOperatorId = "";
         if (StringUtils.isEmpty(operation.getOperatorId())) {
-            realOperatorId = iOperatorGetService.getUser().getOperatorName();
+            realOperatorId = iOperatorGetService.getUser().getUserName();
             if (StringUtils.isEmpty(realOperatorId)) {
                 throw new IllegalArgumentException("[LogRecord] operator is null");
             }

@@ -1,8 +1,10 @@
 package fun.gengzi.save;
 
-import fun.gengzi.aspect.LogRecord;
 import fun.gengzi.core.LogRecordOps;
 
+/**
+ * <h1>用于保存日志</h1>
+ */
 public interface ILogRecordService {
     /**
      * 保存 log

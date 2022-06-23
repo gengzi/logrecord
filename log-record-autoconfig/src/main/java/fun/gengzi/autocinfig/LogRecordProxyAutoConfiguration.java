@@ -92,6 +92,8 @@ public class LogRecordProxyAutoConfiguration implements ImportAware {
         LogRecordAdvice interceptor = new LogRecordAdvice();
         interceptor.setLogRecordOperationSource(logRecordOperationSource());
         interceptor.setFunctionService(functionService);
+        interceptor.setiLogRecordService(recordService());
+        interceptor.setiOperatorGetService(operatorGetService());
         return interceptor;
     }
 

@@ -44,6 +44,7 @@ public class LogRecordExpressionEvaluator extends CachedExpressionEvaluator {
 
     /**
      * 创建  evaluationcontext  评估表达式以解析属性、方法或字段并帮助执行类型转换时，使用该接口
+     *
      * @param method
      * @param args
      * @param targetClass
@@ -66,7 +67,7 @@ public class LogRecordExpressionEvaluator extends CachedExpressionEvaluator {
     private Method getTargetMethod(Class<?> targetClass, Method method) {
         AnnotatedElementKey methodKey = new AnnotatedElementKey(method, targetClass);
         Method targetMethod = this.targetMethodCache.get(methodKey);
-        if (targetMethod != null) {
+        if (targetMethod == null) {
             targetMethod = AopUtils.getMostSpecificMethod(method, targetClass);
             this.targetMethodCache.put(methodKey, targetMethod);
         }

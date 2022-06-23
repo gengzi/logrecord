@@ -1,6 +1,7 @@
 package fun.gengzi.userinfo;
 
-import org.springframework.expression.spel.ast.Operator;
+
+import fun.gengzi.core.Operator;
 
 public interface IOperatorGetService {
 

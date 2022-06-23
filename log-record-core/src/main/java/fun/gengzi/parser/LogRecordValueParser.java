@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
 
 public class LogRecordValueParser implements BeanFactoryAware {
 
-
+    // 正则表达式，用于判断spel表达式是否存在 自定义函数 和 变量
     private static final Pattern pattern = Pattern.compile("\\{\\s*(\\w*)\\s*\\{(.*?)}}");
 
     private IFunctionService functionService;

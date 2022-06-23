@@ -47,7 +47,7 @@ public class LogRecordContext {
      */
     public static Map<String, Object> getVariables() {
         Deque<Map<String, Object>> maps = variableMapStack.get();
-        return maps.pop();
+        return maps.peek();
     }
 
     /**
@@ -70,7 +70,7 @@ public class LogRecordContext {
      * 清除资源
      */
     public static void clear() {
-        if (variableMapStack.get() != null) {
+        if (variableMapStack.get() != null && variableMapStack.get().size() > 0) {
             variableMapStack.get().pop();
 
         }
