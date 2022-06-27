@@ -19,6 +19,7 @@ import org.springframework.context.annotation.ImportAware;
 import org.springframework.context.annotation.Role;
 import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.type.AnnotationMetadata;
+import org.springframework.util.Assert;
 
 import java.util.List;
 
@@ -31,6 +32,7 @@ import java.util.List;
 @Slf4j
 @Configuration
 public class LogRecordProxyAutoConfiguration implements ImportAware {
+    // 注解信息
     private AnnotationAttributes enableLogRecord;
 
     /**
@@ -66,23 +68,31 @@ public class LogRecordProxyAutoConfiguration implements ImportAware {
     }
 
     /**
-     * @Autowired List<IParseFunction> parseFunctions
-     * 在ioc 创建bean 时，注入属性，会把IParseFunction 的所有bean定义信息扫描后，注入子类实例
-     *
      * @param parseFunctions
      * @return
+     * @Autowired List<IParseFunction> parseFunctions
+     * 在ioc 创建bean 时，注入属性，会把IParseFunction 的所有bean定义信息扫描后，注入子类实例
      */
     @Bean
     public ParseFunctionFactory parseFunctionFactory(@Autowired List<IParseFunction> parseFunctions) {
         return new ParseFunctionFactory(parseFunctions);
     }
 
+    /**
+     * 切面
+     *
+     * @param functionService
+     * @return
+     */
     @Bean
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
     public LogRecordPointcutAdvisor logRecordAdvisor(IFunctionService functionService) {
+        Assert.notNull(this.enableLogRecord, "@EnableLogRecord annotation metadata was not injected");
         LogRecordPointcutAdvisor advisor = new LogRecordPointcutAdvisor();
         advisor.setAdvice(logRecordInterceptor(functionService));
         advisor.setPointcut(logRecordPointcut());
+        // 设置注解顺序
+        advisor.setOrder(this.enableLogRecord.<Integer>getNumber("order"));
         return advisor;
     }
 
